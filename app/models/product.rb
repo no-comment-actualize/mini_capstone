@@ -6,11 +6,12 @@ class Product < ApplicationRecord
   # validates :description, length: { in: 10..500 }
 
   belongs_to :supplier
+  # assumptions:
+  # products table has supplier_id foreign key
+  # a model called supplier exists
+  # returns a single instance (hash) of the supplier class
 
-  def images
-    # return an ARRAY of images that are associated with this product
-    Image.where(product_id: id)
-  end
+  has_many :images
 
   def is_discounted?
     price <= 10
