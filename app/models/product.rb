@@ -1,15 +1,15 @@
 class Product < ApplicationRecord
 
-  validates :name, :price, presence: true
-  validates :name, uniqueness: true
-  validates :price, numericality: { greater_than: 0 }
-  validates :description, length: { in: 10..500 }
+  # validates :name, :price, presence: true
+  # validates :name, uniqueness: true
+  # validates :price, numericality: { greater_than: 0 }
+  # validates :description, length: { in: 10..500 }
 
-  # product belongs to a supplier
-  def supplier
-    # return the supplier that THIS (self) product bleongs to
-    Supplier.find_by(id: supplier_id)
-    # returns a single supplier hash whos id matches THIS product's supplier_id
+  belongs_to :supplier
+
+  def images
+    # return an ARRAY of images that are associated with this product
+    Image.where(product_id: id)
   end
 
   def is_discounted?
