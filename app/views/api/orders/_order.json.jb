@@ -6,5 +6,5 @@
   subtotal: order.subtotal,
   tax: order.tax,
   total: order.total,
-  product: order.product
+  product: order.product #this is for the mini capstone frontend
 }
