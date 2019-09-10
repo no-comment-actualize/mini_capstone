@@ -12,6 +12,7 @@ class Product < ApplicationRecord
   # returns a single instance (hash) of the supplier class
 
   has_many :images
+  has_many :orders
 
   def is_discounted?
     price <= 10
