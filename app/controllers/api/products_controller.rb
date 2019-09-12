@@ -13,12 +13,10 @@ class Api::ProductsController < ApplicationController
       @products = @products.where("price < ?", 10)
     end
 
-    # if params[:sort] == "price"
-    #   @products = @products.order(:price)
-    #   if params[:sort_order] == "desc"
-    #     @products = @products.order(price: :desc)
-    #   end
-    # end
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      @products = category.products
+    end
 
     if params[:sort] == "price" && params[:sort_order] == "asc"
       @products = @products.order(:price)
