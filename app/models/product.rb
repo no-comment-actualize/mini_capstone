@@ -12,9 +12,14 @@ class Product < ApplicationRecord
   # returns a single instance (hash) of the supplier class
 
   has_many :images
-  has_many :orders
   has_many :product_categories
   has_many :categories, through: :product_categories
+  has_many :carted_products
+  has_many :orders, through: :carted_products
+
+  def category_names
+    categories.map { |category| category.name }
+  end
 
   # def categories
   #   product_categories.map { |product_category| product_category.category }

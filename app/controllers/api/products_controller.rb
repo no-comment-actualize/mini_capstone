@@ -14,7 +14,7 @@ class Api::ProductsController < ApplicationController
     end
 
     if params[:category]
-      category = Category.find_by(name: params[:category])
+      category = Category.find_by("name iLike ?", params[:category])
       @products = category.products
     end
 
